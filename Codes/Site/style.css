@@ -1,0 +1,115 @@
+
+/* Style du body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background:#FAF0E6;
+}
+
+
+/* Style the top navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color:#2C403D;
+  }
+  
+  /* Style the navigation bar links */
+  .navbar a {
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 22px 9%;
+    text-decoration: none;
+  }
+
+  .navbar p {
+    float: left;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 0px 7%;
+    font-weight: bold;
+    font-size: 20px;
+    
+  }
+  
+  /* Change color on hover */
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .ContDr a{
+    color: darkcyan;
+    }
+
+  .Pied a{
+    color: darkcyan;
+    }
+
+
+  .Boite{
+    display: inline-block; /* Permet de mettre cote à cote */
+    width: 45%;
+    margin : 20px;
+    vertical-align: text-top;
+  }
+  
+  .BodyImage{
+  position: static;
+  margin-bottom: 7%;
+  margin-left: 7%;
+  width : 75%;
+  }
+
+  /* La partie body */
+.TextStyleBody p{
+  font-size: 18px;
+  line-height: 100%; /* Distance entre deux lignes */
+  margin-left: 7%;
+  text-align: left;
+  }
+  
+  .TextStyleBody h2{
+  text-align: center;
+  }
+
+
+  /* CSS contacte */
+
+  .ContGa {
+    width: 50%;
+    float: left;/* 
+    margin-right: 2%;
+    margin-left: 10%; */
+  }
+  
+  .ContDr {
+    width: 50%;
+    float: left;/* 
+    margin-left: 10%;
+    margin-right: 2%; */
+  }
+
+  .TextStyleBodyC {
+    font-size: 18px;
+    line-height: 100%; /* Distance entre deux lignes */
+    margin-left: 2%;
+    text-align: left;
+  }
+
+  .TextStyleBodyC p{
+    width: 85%;
+    }
+
+  .TextStyleBodyC h2{
+    text-align: center;
+    }
+
+    .BodyImageC{
+      position: static;
+      margin-bottom: 2%;
+      /* margin-left: 7%; */
+      width : 85%;
+      border: solid;
+      border-color: black;
+      }
