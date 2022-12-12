@@ -74,42 +74,66 @@ body {
   }
 
 
-  /* CSS contacte */
+/* CSS contacte */
 
-  .ContGa {
-    width: 50%;
-    float: left;/* 
-    margin-right: 2%;
-    margin-left: 10%; */
+.ContGa {
+  width: 50%;
+  float: left;/* 
+  margin-right: 2%;
+  margin-left: 10%; */
+}
+
+.ContDr {
+  width: 50%;
+  float: left;/* 
+  margin-left: 10%;
+  margin-right: 2%; */
+}
+
+.TextStyleBodyC {
+  font-size: 18px;
+  line-height: 100%; /* Distance entre deux lignes */
+  margin-left: 2%;
+  text-align: left;
+}
+
+.TextStyleBodyC p{
+  width: 85%;
   }
-  
-  .ContDr {
-    width: 50%;
-    float: left;/* 
-    margin-left: 10%;
-    margin-right: 2%; */
+
+.TextStyleBodyC h2{
+  text-align: center;
+}
+
+.BodyImageC{
+  position: static;
+  margin-bottom: 2%;
+  /* margin-left: 7%; */
+  width : 85%;
+  border: solid;
+  border-color: black;
   }
 
-  .TextStyleBodyC {
-    font-size: 18px;
-    line-height: 100%; /* Distance entre deux lignes */
-    margin-left: 2%;
-    text-align: left;
+
+.Parametre{
+  border:solid;
+  margin-left: 2%;
+  float: left;;
+  width: 20%;
+}
+
+.Restitution{
+  width: 75%;
+  margin-right: 2%;
+  float: left;
+  border:solid;
+
+}
+
+.BodyImageD{
+  position:static;
+  margin-top :5%;
+  margin-left: 15%;
+  margin-bottom: 5%;
+  width : 70%;
   }
-
-  .TextStyleBodyC p{
-    width: 85%;
-    }
-
-  .TextStyleBodyC h2{
-    text-align: center;
-    }
-
-    .BodyImageC{
-      position: static;
-      margin-bottom: 2%;
-      /* margin-left: 7%; */
-      width : 85%;
-      border: solid;
-      border-color: black;
-      }
