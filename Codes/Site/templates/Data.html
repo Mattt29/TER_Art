@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Data{% endblock %}
+{% block content %}
+<section class="TextStyleBody">
+    <h2>La Data-Base actuelle utilisée est "Cifar10" avec comme variable "Label" sélectionnée. <br> La méthode de réduction choisie est "t-SNE".</h2>
+    <article>
+        <div class="Parametre">
+            <br><br>
+            <p>Choix de la base : </p>
+            <p>"Liste des bases"</p>
+            <br>
+            <p>Choix de la réduction</p>
+            <p>"Choix des réductions"</p>
+            <br>
+            <p>Choix de la variable</p>
+            <p>"Liste des variables en fonction des bases"</p>
+            <br><br>
+            <p>"Description de la base"</p>
+            <p>"Description de la base"</p>
+            <p>"Description de la base"</p>
+            <p>"Description de la base"</p>
+            <p>"Description de la base"</p>
+            <p>"Description de la base"</p>
+            <p>"Description de la base"</p>
+            <br>
+        </div>
+        <div class="Restitution">
+            <p>
+                {{ div|safe }}
+                <script src="http://cdn.pydata.org/bokeh/release/bokeh-3.0.2.min.js"></script>
+                <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.0.2.min.js"></script>
+                {{ script|safe }}
+            </p>
+        </div>
+    </article>
+</section>
+
+{% endblock %}

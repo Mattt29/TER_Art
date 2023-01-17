@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>{% block title %}L'art des mathématiques{% endblock %}</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+    </head>
+
+    <body>
+        <div class="navbar">
+            <p>L'art des mathématiques</p>
+            <a href="http://127.0.0.1:5000/Contact/">Contact</a>
+            <a href="http://127.0.0.1:5000/Data/">Mise en pratique</a>
+            <a href="http://127.0.0.1:5000/">Accueil</a>
+        </div> 
+
+    {% block content %}{% endblock %}
+
+    <footer class="Pied">
+        <p>&nbsp;Copyright LesArtistes MIASHS - Tous droits réservés
+        &nbsp;
+        <a href="http://127.0.0.1:5000/Contact/">Nous contacter !</a></p>
+    </footer>
+
+    </body>
+
+
+</html>
