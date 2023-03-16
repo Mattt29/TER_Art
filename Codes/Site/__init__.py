@@ -25,7 +25,7 @@ def create_app():
     # UMAP Réduction des features à 2 dimensions
     file = open("data/umap_array", "rb")
     #read the file to numpy array
-    projections_umap = np.load(file)
+    projections_umap = np.load(file, allow_pickle=True)
     #reduc=projections_umap
 
     @app.route('/Data/') #/<str:reduc>/
