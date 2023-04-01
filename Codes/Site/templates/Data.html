@@ -29,9 +29,11 @@
         <div class="Restitution">
             <p>
                 {{ div|safe }}
+                {{ script|safe }}
+                
                 <script src="http://cdn.pydata.org/bokeh/release/bokeh-3.0.2.min.js"></script>
                 <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.0.2.min.js"></script>
-                {{ script|safe }}
+                
             </p>
         </div>
     </article>
