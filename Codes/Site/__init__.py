@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import io
 import random
 from flask import Response
@@ -12,85 +12,265 @@ import numpy as np
 import pandas as pd
 from bokeh.plotting import figure, show
 from bokeh.io import output_notebook
-from bokeh.models import ColumnDataSource, Tabs,TabPanel,CategoricalColorMapper, CustomJS, Select
+from bokeh.models import ColumnDataSource, Tabs, TabPanel, CategoricalColorMapper, CustomJS, Select
 from bokeh.embed import components
 import itertools
-from bokeh.palettes import Category20
+from bokeh.palettes import Category20, Category10
+from bokeh.models import LegendItem
+from bokeh.models import LegendItem, Legend, GroupFilter, CDSView, Circle, CustomJSHover, HoverTool, Div
+from bokeh.layouts import column, row
+from bokeh.events import MouseMove
+import itertools
+from flask import url_for
+import os
+
 
 def create_app():
+
     app = Flask(__name__)
+
+    data = pd.read_csv("data/data.csv")
 
     @app.route('/')
     def homepage():
+
         return render_template('homepage.html')
 
-    # UMAP Réduction des features à 2 dimensions
-    UMAP = open("data/umap_array", "rb")
-    PCA = open("data/pca_array_numpy.npy", "rb")
-    TSNE = open("data/tsne_array_numpy.npy", "rb")
-    cifar_labels=open("data/cifar_labels.npy", "rb")
-    cifar_labels2=open("data/cifar_labels2.npy", "rb")
+    DOSSIER_DATA = "data/csv"
 
-    #read the file to numpy array
-    projections_UMAP = np.load(UMAP)
-    #reduc=projections_umap
-    projections_PCA=np.load(PCA)
-    projections_TSNE=np.load(TSNE)
-    labels=np.load(cifar_labels)
-    classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
-    classes2 = ('machina','animal')
+    # Obtenez tous les fichiers CSV dans le dossier de données
+    fichiers_data = [fichier for fichier in os.listdir(
+        DOSSIER_DATA) if fichier.endswith('.csv')]
 
-    @app.route('/Data/') #/<str:reduc>/   
-    def Data(reduc1=projections_PCA,reduc2=projections_TSNE,reduc3=projections_UMAP):
+    # Obtenez tous les modèles, tâches et réductions de dimensions uniques dans les noms de fichiers
+    MODELES = list(set([fichier.split('_')[0] for fichier in fichiers_data]))
+    TACHES = list(set([fichier.split('_')[1] for fichier in fichiers_data]))
+    REDUCTIONS = list(set([fichier.split('_')[2].split('.')[0]
+                           for fichier in fichiers_data]))
 
-        plot1=create_plot1(reduc1)
-        plot2=create_plot2(reduc2)
-        plot3=create_plot3(reduc3)
-        tab1 = TabPanel(child=plot1, title="PCA")
-        tab2 = TabPanel(child=plot2, title="t-SNE")
-        tab3 = TabPanel(child=plot3, title="UMAP")
-        plot=Tabs(tabs=[tab1, tab2, tab3])
-        script, div = components(plot)
-        #show(plot_figure)
+    @app.route('/Data/', methods=['GET','POST'])  # /<str:reduc>/
+    def Data():
+        if request.method == 'POST':
 
-        return render_template('Data.html',div=div,script=script)
-    
+            modele = request.form['modele']
+            tache = request.form['tache']
+            reduction = request.form['reduction']
+
+            chemin_fichier = os.path.join(
+                DOSSIER_DATA, f"{modele}_{tache}_{reduction}.csv")
+            data = pd.read_csv(chemin_fichier)
+
+            plot = create_plot(data,tache)
+            script, div = components(plot)
+
+            #tab4 = TabPanel(child=plot4, title="A BRAND NEW WORLD")
+            #plot = Tabs(tabs=[tab1, tab2, tab3, tab4]) 
+
+            return render_template('Data.html', div=div, script=script, MODELES=MODELES, TACHES=TACHES, REDUCTIONS=REDUCTIONS, fichiers_data=fichiers_data)
+        else:
+             return render_template('Data.html', MODELES=MODELES, TACHES=TACHES, REDUCTIONS=REDUCTIONS,fichiers_data=fichiers_data)
+        
     @app.route('/Contact/')
     def Contact():
-            return render_template('Contact.html')
+
+        return render_template('Contact.html')
 
     @app.route('/about/')
     def about():
+
         return render_template('about.html')
 
-    @app.route('/hello/')
-    @app.route('/hello/<name>')
-    def hello(name='diallo'):
-        return render_template('hello.html', name=name)
+   
+    """ 
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+    """
+    
+    def create_plot(data,tache):
 
-    @app.route('/plot.png')
-    def plot_png():
-        fig = create_figure()
-        output = io.BytesIO()  
-        FigureCanvas(fig).print_png(output)
-        return Response(output.getvalue(), mimetype='image/png')
-    
-    def create_figure():
-        fig = Figure()
-        axis = fig.add_subplot(1, 1, 1)
-        xs = range(100)
-        ys = [random.randint(1, 50) for x in xs]
-        axis.plot(xs, ys)
-        return fig
-    
+        data = data.sample(frac=1)
+        data.rename(columns={'feature_1': 'x', 'feature_2': 'y'}, inplace=True)
+
+        classes = [colonne.split('_name')[0] for colonne in data.columns if '_name' in colonne]
+        data.rename(columns=lambda col: f"{col.split('_name')[0]}" if col.split('_name')[0] in classes else col, inplace=True)
+
+        print(data.columns)
+        #data = data[data[classes].notna()]
+        data.dropna(subset=classes, inplace=True)
+
+        classes_sets = [data[col].unique() for col in classes]
+        print(classes)
+        print(classes_sets)
+        
+        """
+        for task in classes:
+            globals()[f"list_{task}"] = data[task].unique().tolist()
+        """   
+
+        color_pals = [list(itertools.islice(itertools.cycle(Category20[20]), len(classes))) for classes in classes_sets]
+
+        color_mappings = []
+        for i, col in enumerate(classes):
+            # Créer le mapping de couleur pour chaque ensemble de classes
+            color_mapping = CategoricalColorMapper(factors=classes_sets[i], palette=color_pals[i])
+            color_mappings.append(color_mapping)
+            print(color_mapping)
+        
+        max_size = 2000  # on peut prendre une portion du dataframe car on a shuffle
+        data  = data[:max_size]
+
+        plot_figure = figure(
+            title='Projection UMAP du jeu de données',
+            width=900,
+            height=600,
+            tools='pan, wheel_zoom, reset, box_zoom, box_select, lasso_select, crosshair, tap, save'
+        )
+
+        zoom_figure = figure(
+            width=300,
+            height=300,
+            x_axis_type=None,
+            y_axis_type=None,
+            tools='', #crosshair ou pas ?
+            match_aspect=True,
+            title='Vue zoomée'
+        )
+
+        """
+        <div>
+            <div>
+                <span style='font-size: 12px;'><b>class1:</b> @class1 </span>
+            </div>
+            <div>
+                <img src='../static/images/wikiart/data/@name' style='float: left; aspect-ratio: auto;margin: 5px 5px 5px 5px;width:250px;'/>
+            </div>
+        </div>
+        """
+
+        hover_tool = HoverTool(tooltips="""
+            <div>
+                <img src='../static/images/wikiart/data/@name' style='float: left; aspect-ratio: auto;margin: 5px 5px 5px 5px;width:250px;'/>
+            </div>
+        """)
+
+        plot_figure.add_tools(hover_tool)
+
+
+        legends = []
+        for i, col in enumerate(classes):
+            # Créer la légende pour chaque ensemble de classes
+            legend = Legend(title=col, location="top_left",
+                            title_text_font_style="bold italic", background_fill_alpha=0.6, visible=True)
+            legend_items = []
+            for clas, color in zip(classes_sets[i], color_pals[i]):
+                source_subset = ColumnDataSource(data[data[col] == clas])
+                glyph = plot_figure.circle("x", "y", source=source_subset,  fill_color={'field': col, 'transform': color_mappings[i]}, line_color='white',
+                                        size=10, fill_alpha=0.8,visible = True) #color=color
+                zoom_glyph = zoom_figure.circle("x", "y", source=source_subset, fill_color={'field': col, 'transform': color_mappings[i]}, line_color={'field': col, 'transform': color_mappings[i]},visible = True, line_width = 2, size=10, fill_alpha=0.7, line_alpha=0.8)
+                if col != tache :
+                    glyph.visible = False
+                    zoom_glyph.visible = False
+                legend_items.append(LegendItem(label=clas, renderers=[glyph]))
+            legend.items = legend_items
+            plot_figure.add_layout(legend)
+            
+            legends.append(legend)
+        
+        # Afficher uniquement la légende de la classe sélectionnée
+        selected_class = tache 
+        for legend in legends:
+            if legend.title == selected_class:
+                legend.visible = True
+            else:
+                legend.visible = False
+
+
+        plot_figure.legend.click_policy="mute"
+      
+
+        """                         
+        # Ajouter les légendes à la figure
+        plot_figure.add_layout(legend1)
+        plot_figure.add_layout(legend2)
+        plot_figure.legend.click_policy = "mute"
+        """
+        Selecthandler = CustomJS(args=dict(plot_figure=plot_figure, legends=legends),
+                         code="""
+                            var value = cb_obj.value;
+                            for (var j = 0; j < legends.length; j++) {
+                                var legend_items = legends[j].items;
+                                if (value == legends[j].title) {
+                                    legends[j].visible = true;
+                                    for (var i = 0; i < legend_items.length; i++) {
+                                        legend_items[i].renderers[0].visible = true;
+                                        legend_items[i].visible = true;
+                                    }
+                                } else {
+                                    legends[j].visible = false;
+                                    for (var i = 0; i < legend_items.length; i++) {
+                                        legend_items[i].renderers[0].visible = false;
+                                        legend_items[i].visible = false;
+                                    }
+                                }
+                            }
+                            plot_figure.change.emit();
+                        """)
+
+
+
+        
+
+        update_zoom_callback = CustomJS(args=dict(plot_figure=plot_figure, zoom_figure=zoom_figure), code="""
+        const x = cb_obj.x;
+        const y = cb_obj.y;
+        var zoom_range = 1;
+        var value = cb_obj.value;
+        var xs = plot_figure.x_range.start;
+        var xe = plot_figure.x_range.end;
+        var ys = plot_figure.y_range.start;
+        var ye = plot_figure.y_range.end;
+        var zoom_range_x = (xe - xs) /20;
+        var zoom_range_y = (ye - ys) /20;
+
+        zoom_figure.x_range.start = x - zoom_range_x;
+        zoom_figure.x_range.end = x  + zoom_range_x;
+        zoom_figure.y_range.start = y - zoom_range_y;
+        zoom_figure.y_range.end = y + zoom_range_y;
+
+
+        //zoom_figure.x_range.start = x - zoom_range;
+        //zoom_figure.x_range.end = x  + zoom_range;
+        //zoom_figure.y_range.start = y - zoom_range;
+        //zoom_figure.y_range.end = y + zoom_range;
+        """)
+
+        plot_figure.js_on_event(MouseMove, update_zoom_callback)
+
+        """
+        select = Select(title="Option:", value="classes1",
+                        options=["classes1", "classes2"])
+        select.js_on_change("value", Selecthandler)
+        """
+        select = Select(title="Option:", value=tache,
+                options=classes)
+        select.js_on_change("value", Selecthandler)
+
+        select.js_on_change("value", update_zoom_callback)
+
+        layout = column(select, row(plot_figure, zoom_figure))
+
+        return layout
+
     def create_plot1(array):
-        max_size=2000
-        colors = itertools.cycle(Category20[20])    
+
+        max_size = 2000
+        colors = itertools.cycle(Category20[20])
         pal = [color for m, color in zip(range(len(classes)), colors)]
         data_df = pd.DataFrame(array[:max_size], columns=('x', 'y'))
         data_df['class'] = [x for x in labels][:max_size]
         datasource = ColumnDataSource(data_df)
-        color_mapping = CategoricalColorMapper(factors=classes,palette=pal)
+        color_mapping = CategoricalColorMapper(factors=classes, palette=pal)
         plot_figure1 = figure(
             title='PCA projection of the dataset',
             width=900,
@@ -112,66 +292,6 @@ def create_app():
         plot_figure1.title.text_font_size = '30pt'
 
         return plot_figure1
-
-    def create_plot2(array):
-        max_size=2000
-        colors = itertools.cycle(Category20[20])    
-        pal = [color for m, color in zip(range(len(classes)), colors)]
-        data_df = pd.DataFrame(array[:max_size], columns=('x', 'y'))
-        data_df['class'] = [x for x in labels][:max_size]
-        datasource = ColumnDataSource(data_df)
-        color_mapping = CategoricalColorMapper(factors=classes,palette=pal)
-        plot_figure2 = figure(
-            title='t-SNE projection of the dataset',
-            width=900,
-            height=600,
-            tools=('pan, wheel_zoom, reset'))
-        plot_figure2.circle(
-            'x',
-            'y',
-            source=datasource,            
-            color=dict(field='class', transform=color_mapping),
-            line_alpha=0.6,
-            fill_alpha=0.6,
-            size=10,
-            legend_field="class"
-        )
-        plot_figure2.legend.location = "top_left"
-        plot_figure2.legend.label_text_font_size = "20px"
-        plot_figure2.title.text_font_size = '30pt'
-
-
-        return plot_figure2
-
-    def create_plot3(array):
-        max_size=2000
-        colors = itertools.cycle(Category20[20])    
-        pal = [color for m, color in zip(range(len(classes)), colors)]
-        data_df = pd.DataFrame(array[:max_size], columns=('x', 'y'))
-        data_df['class'] = [x for x in labels][:max_size]
-        datasource = ColumnDataSource(data_df)
-        color_mapping = CategoricalColorMapper(factors=classes,palette=pal)
-        plot_figure3 = figure(
-            title='UMAP projection of the dataset',
-            width=900,
-            height=600,
-            tools=('pan, wheel_zoom, reset'))
-        plot_figure3.circle(
-            'x',
-            'y',
-            source=datasource,
-            color=dict(field='class', transform=color_mapping),
-            line_alpha=0.6,
-            fill_alpha=0.6,
-            size=10,
-            legend_field="class"
-        )
-        plot_figure3.legend.location = "top_left"
-        plot_figure3.legend.label_text_font_size = "20px"
-        plot_figure3.title.text_font_size = '30pt'
-
-
-        return plot_figure3
 
     """   
     umap_2d = umap.umap_.UMAP(n_components=2)
