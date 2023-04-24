@@ -8,7 +8,6 @@ body {
   background-position: center top;
   background-size: 100%;
   font-size: 16px;
-  line-height: 1.6;
   color: #111;
 }
 
@@ -28,7 +27,7 @@ body {
   float: right;
   color: white;
   text-align: center;
-  padding: 28px 28px;
+  padding: 20px 28px;
   text-decoration: none;
   font-variant: small-caps;
   font-size: 0.96vw;
@@ -76,14 +75,15 @@ h2 {
   font-variant: small-caps;
   text-align: center;
   color: #111;
-  padding: 10px;
+  padding: 8px;
+  padding-left: 22px;
+  padding-right: 22px;
   border: 3px solid #111;
   border-style: solid;
-  border-radius: 15px;
+  border-radius: 50px;
   background-color: rgba(245, 245, 245, 0.85);
   margin: 10px;
   margin-top: 100px;
-  padding: 20px;
 }
 
 h3 {
@@ -91,17 +91,18 @@ h3 {
   font-variant: small-caps;
   text-align: center;
   color: #111;
-  padding: 8px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
   border: 0px solid #111;
   border-radius: 15px;
-  background-color: rgba(245, 245, 245, 0.85);
+  background-color: rgba(245, 245, 245, 1);
   margin: 10px;
 }
 
 .text-container {
-  background-color: rgba(245, 245, 245, 0.85);
+  line-height: 1.5;
   padding: 0px 20px;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -125,6 +126,7 @@ h3 {
   align-items: stretch;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .Boite {
@@ -134,6 +136,16 @@ h3 {
   width: 45%;
   margin: 20px;
   background-color: none;
+}
+
+.inner-container {
+  background-color: rgba(245, 245, 245, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .BodyImage {
