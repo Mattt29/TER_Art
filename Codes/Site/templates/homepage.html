@@ -3,45 +3,62 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}<section class="TextStyleBody">
-    <h2> Qui sommes-nous ? </h2>
-    <article>
-     <div class="Boite">
-   <img class="BodyImage" alt="ImageGroupe" src="../static/pictures/Who.jpg"/>
-     </div>
-     <div class="Boite">
-      <br><br>
-      <p>Bonjour, nous sommes 5 étudiants en master MIASHS.</p>
-      <p>Le master MIASHS est un master de mathématiques et informatiques appliquées aux sciences humaines et sociales.</p>
-      <p>Notre groupe est composé de plusieurs profils, certain d'entre nous sont en reprise d'études d'autres se sont réorientés et d'autre encore poursuive simplement leurs cursus.</p>
-      <p>Nous avons pour but plus tard de devenir des Data-Scientists.</p>
-     </div>
+  <div class="heading-container">
+
+    <article class="box-container">
+      <h1>bienvenue sur notre site dédié au projet de recherche encadré</h1>
     </article>
- 
-    <h2> Quel est notre objectif ? Et comment ça marche ? </h2>
-    <article>
-     <div class="Boite">
-      <br><br>
-        <p>En début d'année, un projet nous a été donné.</p>
-      <p>L'objectif de ce dernier est de créer une architecture capable de traiter un grand jeu de données d'image et d'en faire des groupes. </p>
-      <p>Nous nous sommes servis de machine learning et d'autres outils étudiés en cours pour créer nos modèles </p>
-      </div>
+
+    <h2>l'équipe</h2>
+  </div>
+  <article class="box-container">
     <div class="Boite">
-   <img class="BodyImage" alt="ImageGroupe" src="../static/pictures/Objectif.png"/>
-     </div>
-    </article>
- 
-    <h2> Comment cela pourrait aider ?  </h2>
-    <article>
-     <div class="Boite">
-   <img class="BodyImage" alt="ImageGroupe" src="../static/pictures/Plantation.jpg"/>
-     </div>
-     <div class="Boite">
-      <br><br>
-      <p>Les cas d'application sont multiples. Une fois fini cette outil pourrait permettre d'améliorer grandment le quotidien de plusieurs personnes.</p>
-      <p>Nous pouvons donner quelques exemples. Les astronaumes ont énormément d'images mais pas assez de temps. Cet outil pourrait leur permettre de faire un premier trie selon les critères qu'il souhaite</p>
-      <p>Pour l'agriculture, des caméras pourrait prendre en photo les plantations et analyser régulièrement l'état de ces dernieres. Si elles font partie des cas de bonne santé ou non.</p>
-      <p>Dans l'art, n'importe qui pourrait étudier une peinture sans avoir une culture immense et sans même savoir comment la toile s'appelle.</p>
-     </div>
-    </article>
- 
-   </section>{% endblock %}
+      <img class="BodyImage" alt="ImageGroupe" src="../static/pictures/Who.jpg" />
+    </div>
+    <div class="Boite text-container">
+      <h3>qui sommes-nous ?</h3>
+      <p>Nous sommes un groupe de cinq étudiants en Master MIASHS, une formation spécialisée en mathématiques et
+        informatique appliquées aux sciences humaines et sociales. Notre équipe est constituée de profils variés,
+        incluant des étudiants en reprise d'études, des personnes en réorientation et d'autres poursuivant simplement
+        leur cursus. Nous avons pour ambition de devenir des Data Scientists.</p>
+    </div>
+  </article>
+  <div class="heading-container">
+
+    <h2>le projet</h2>
+  </div>
+  <article class="box-container">
+    <div class="Boite text-container">
+      <h3> quel est notre objectif ? comment ça fonctionne ? </h3>
+      <p>Au début de l'année, un projet nous a été assigné. L'objectif de ce projet est de concevoir une architecture
+        capable de traiter un vaste ensemble de données d'images et de les regrouper. Nous avons utilisé des techniques
+        de machine learning et d'autres outils étudiés en cours pour créer nos modèles.</p>
+    </div>
+    <div class="Boite">
+      <img class="BodyImage" alt="ImageGroupe" src="../static/pictures/Objectif.png" />
+    </div>
+  </article>
+  <div class="heading-container">
+
+    <h2>applications potentielles</h2>
+  </div>
+  <article class="box-container">
+    <div class="Boite">
+      <img class="BodyImage" alt="ImageGroupe" src="../static/pictures/Plantation.jpg" />
+    </div>
+    <div class="Boite text-container">
+      <h3>comment cela pourrait aider ?</h3>
+      <p>Les applications potentielles de cet outil sont nombreuses et pourraient améliorer considérablement la vie de
+        plusieurs personnes:</p>
+      <ul>
+        <li><strong>Astronomie :</strong> Cet outil pourrait aider les astronomes à réaliser un premier tri des images
+          selon les critères souhaités, leur permettant de gagner du temps pour les analyses.</li>
+        <li><strong>Agriculture :</strong> Des caméras pourraient capturer des photos des cultures et analyser
+          régulièrement leur état pour déterminer si elles sont en bonne santé ou non.</li>
+        <li><strong>Art :</strong> Cet outil permettrait à quiconque d'étudier une peinture sans avoir besoin d'une
+          connaissance approfondie de l'histoire de l'art ou même du nom de l'œuvre.</li>
+      </ul>
+    </div>
+  </article>
+
+</section>{% endblock %}
