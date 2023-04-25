@@ -3,20 +3,19 @@
 /* Style du body */
 body {
   font-family: Calibri, sans-serif;
-  background: rgba(17, 17, 17, 1);
+  background: rgb(216, 216, 205);
   font-size: 16px;
   color: #111;
   position: relative;
   overflow-y: scroll;
+
 }
 
 body::before {
   content: "";
-  background-image: url('../img/background.jpg');
+  background-image: linear-gradient(rgba(17, 17, 17, 0.15), rgba(17, 17, 17, 0.15)), url('../img/background.jpg');
   background-position: center top;
   background-size: 100%;
-  opacity: 0.85;
-  /* Ajustez cette valeur pour modifier l'opacité (0 = opaque, 1 = transparent) */
   position: absolute;
   top: 0;
   left: 0;
@@ -24,6 +23,11 @@ body::before {
   height: 100%;
   z-index: -1;
 }
+
+body.custom-background {
+  background: rgb(17, 17, 17);
+}
+
 
 /* Style the top navigation bar */
 .navbar {
@@ -272,6 +276,36 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-thumb:hover {
   background-color: rgba(245, 245, 245, 0.85);
+}
+
+.carousel-item img {
+    height: 40%;
+    object-fit: cover; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 30px;
+    height: 30px;
+}
+.carousel-control-prev-icon:before,
+.carousel-control-next-icon:before {
+    content: "";
+    border-style: solid;
+    border-width: 3px 3px 0 0;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    position: relative;
+}
+.carousel-control-prev-icon:before {
+    transform: rotate(135deg);
+    margin-right: 5px;
+}
+.carousel-control-next-icon:before {
+    transform: rotate(-45deg);
+    margin-left: 5px;
 }
 
 /* Pour les écrans de 17 pouces et plus (largeur supérieure à 1366 pixels) */

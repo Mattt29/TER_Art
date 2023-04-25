@@ -33,8 +33,9 @@ def create_app():
 
     @app.route('/')
     def homepage():
-
-        return render_template('homepage.html')
+        image_folder = os.path.join('static','img', 'bandeau')
+        image_files = [f for f in os.listdir(image_folder) if os.path.isfile(os.path.join(image_folder, f))]
+        return render_template('homepage.html', image_files=image_files)
 
     DOSSIER_DATA = "data/csv"
 
