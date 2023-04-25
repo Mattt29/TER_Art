@@ -1,133 +1,136 @@
-
 {% extends 'base.html' %}
 
 {% block title %}Data{% endblock %}
 {% block content %}
-<section class="TextStyleBody">
-     {% if actual_dataset  is defined %}
-      <h2>La Data-Base actuelle utilisée est <font color="red">{{actual_dataset}}</font> avec comme variable <font color="red">{{actual_tache}}</font> sélectionnée. <br> La méthode de réduction choisie est <font color="red">{{actual_reduction}}</font>.</h2>
-     {% else %}
-      <h2>Veuillez sélectionner un dataset, une tâche et une réduction de dimension</h2>
-     {% endif %}
-     <article>
-        
-            <form action="/Data/" method="post">
-      <label for="dataset">Dataset :</label>
-      <select name="dataset" id="dataset">
-        <!-- <option value="">--select a dataset first--</option> -->
-        {% for dataset in DATASETS %}
+<div class="text-style-body-container" id="unique-data-container">
+
+  <section class="TextStyleBody">
+    {% if actual_dataset is defined %}
+    <h2>la base de données actuellement étudiée est <font color="red">{{actual_dataset}}</font> et <font color="red">
+        {{actual_tache}}</font> est la variable d'entraînement sélectionnée. <br> la méthode de réduction de dimensions
+      choisie est <font color="red">{{actual_reduction}}</font>.</h2>
+    {% else %}
+    <h2>veuillez sélectionner un dataset, une tâche et une réduction de dimension</h2>
+    {% endif %}
+    <article>
+
+      <form class="form-container" action="/Data/" method="post">
+        <label for="dataset">Dataset :</label>
+        <select name="dataset" id="dataset" class="custom-select">
+          <!-- <option value="">--select a dataset first--</option> -->
+          {% for dataset in DATASETS %}
           <option value="{{ dataset }}">{{ dataset }}</option>
-        {% endfor %}
-      </select>
-      <br>
-      <label for="tache">Tâche :</label>
-      <select name="tache" id="tache">
-        {% for tache in TACHES %}
+          {% endfor %}
+        </select>
+        <br>
+        <label for="tache">Tâche :</label>
+        <select name="tache" id="tache" class="custom-select">
+          {% for tache in TACHES %}
           <option class="{{ tache }}" value="{{ tache }}">{{ tache }}</option>
-        {% endfor %}
-      </select>
-      <br>
-      <label for="reduction">Réduction de dimension :</label>
-      <select name="reduction" id="reduction">
-        {% for reduction in REDUCTIONS %}
+          {% endfor %}
+        </select>
+        <br>
+        <label for="reduction">Réduction de dimension :</label>
+        <select name="reduction" id="reduction" class="custom-select">
+          {% for reduction in REDUCTIONS %}
           <option class="{{ reduction }}" value="{{ reduction }}">{{ reduction }}</option>
-        {% endfor %}
-      </select>
-      <br>
-      <input type="submit" value="Afficher">
-    </form>
-        
-        <div class="Restitution">
-            <p>
-                {{ div|safe }}
-                {{ script|safe }}
-                
-                <script src="http://cdn.pydata.org/bokeh/release/bokeh-3.0.2.min.js"></script>
-                <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.0.2.min.js"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                
-            </p>
-        </div>
+          {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Afficher">
+      </form>
+
+      <div class="Restitution">
+        <p>
+          {{ div|safe }}
+          {{ script|safe }}
+
+          <script src="http://cdn.pydata.org/bokeh/release/bokeh-3.0.2.min.js"></script>
+          <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.0.2.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        </p>
+      </div>
     </article>
     <script>
-  $(document).ready(function() {
-    // Récupérer les options de tâches et de réductions de dimensions pour chaque modèle
-    var options = {
+
+      $(document).ready(function () {
+        // Récupérer les options de tâches et de réductions de dimensions pour chaque modèle
+        var options = {
       {% for dataset in DATASETS %}
-      '{{ dataset }}': {
-        {% set taches = [] %}
-        {% for fichier in fichiers_data if fichier.startswith(dataset) %}
-        {% set _ = taches.append(fichier.split('_')[1]) if fichier.split('_')[1] not in taches  %}
-        {% endfor %}
-        {% for tache in taches %}
-        '{{ tache }}': [
-          {% set reductions = [] %}
-          {% for fichier in fichiers_data if fichier.startswith(dataset) and fichier.split('_')[1] == tache %}
-          {% set _ = reductions.append(fichier.split('_')[2].split('.')[0]) if fichier.split('_')[2].split('.')[0] not in taches %}
+        '{{ dataset }}': {
+          {% set taches = [] %}
+          {% for fichier in fichiers_data if fichier.startswith(dataset) %}
+          {% set _ = taches.append(fichier.split('_')[1]) if fichier.split('_')[1] not in taches %}
           {% endfor %}
-          {% for reduction in reductions %}
-          '{{ reduction }}',
+          {% for tache in taches %}
+          '{{ tache }}': [
+            {% set reductions = [] %}
+        {% for fichier in fichiers_data if fichier.startswith(dataset) and fichier.split('_')[1] == tache %}
+        {% set _ = reductions.append(fichier.split('_')[2].split('.')[0]) if fichier.split('_')[2].split('.')[0] not in taches %}
+        {% endfor %}
+        {% for reduction in reductions %}
+        '{{ reduction }}',
           {% endfor %}
         ],
         {% endfor %}
       },
-      {% endfor %}
+        {% endfor %}
     }
 
 
     // Filtrer les options de tâches et de réductions de dimensions en fonction du dataset sélectionnéS
     var dataset = '{{DATASETS[0]}}';  // Dataset sélectionné par défaut
-    var taches = options[dataset];
-    var tache_select = $('#tache');
-    tache_select.empty();
-    $.each(taches, function(tache) {
-        tache_select.append($('<option/>', { value: tache, text: tache }));
-    });
-
-    var reductions = taches[$('#tache').val()];
-    var reduction_select = $('#reduction');
-    reduction_select.empty();
-    $.each(reductions, function(index, reduction) {
-        reduction_select.append($('<option/>', { value: reduction, text: reduction }));
-    });
-
-
-    // Mettre à jour les options de tâches et de réductions de dimensions en fonction du modèle et de la tâche sélectionnée
-    $('#dataset').on('change', function() {
-      var dataset = $(this).val();
       var taches = options[dataset];
-
       var tache_select = $('#tache');
       tache_select.empty();
-      $.each(taches, function(tache) {
+      $.each(taches, function (tache) {
         tache_select.append($('<option/>', { value: tache, text: tache }));
       });
 
+      var reductions = taches[$('#tache').val()];
       var reduction_select = $('#reduction');
       reduction_select.empty();
-      $.each(taches[$('#tache').val()], function(index, reduction) {
+      $.each(reductions, function (index, reduction) {
         reduction_select.append($('<option/>', { value: reduction, text: reduction }));
       });
-    });
 
-    $('#tache').on('change', function() {
-      var dataset = $('#dataset').val();
-      var tache = $(this).val();
-      var reductions = options[dataset][tache];
 
-      var reduction_select = $('#reduction');
-      reduction_select.empty();
-      $.each(reductions, function(index, reduction) {
-        reduction_select.append($('<option/>', { value: reduction, text: reduction }));
+      // Mettre à jour les options de tâches et de réductions de dimensions en fonction du modèle et de la tâche sélectionnée
+      $('#dataset').on('change', function () {
+        var dataset = $(this).val();
+        var taches = options[dataset];
+
+        var tache_select = $('#tache');
+        tache_select.empty();
+        $.each(taches, function (tache) {
+          tache_select.append($('<option/>', { value: tache, text: tache }));
+        });
+
+        var reduction_select = $('#reduction');
+        reduction_select.empty();
+        $.each(taches[$('#tache').val()], function (index, reduction) {
+          reduction_select.append($('<option/>', { value: reduction, text: reduction }));
+        });
       });
-    });
+
+      $('#tache').on('change', function () {
+        var dataset = $('#dataset').val();
+        var tache = $(this).val();
+        var reductions = options[dataset][tache];
+
+        var reduction_select = $('#reduction');
+        reduction_select.empty();
+        $.each(reductions, function (index, reduction) {
+          reduction_select.append($('<option/>', { value: reduction, text: reduction }));
+        });
+      });
   });
-</script>
+    </script>
 
-</section>
+  </section>
 
-
-
+</div>
 
 
 {% endblock %}

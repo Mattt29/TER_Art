@@ -13,12 +13,13 @@ import pandas as pd
 from bokeh.plotting import figure, show
 from bokeh.io import output_notebook
 from bokeh.models import ColumnDataSource, Tabs, TabPanel, CategoricalColorMapper, CustomJS, Select
+from bokeh.models.widgets import Toggle
 from bokeh.embed import components
 import itertools
 from bokeh.palettes import Category20, Category10
 from bokeh.models import LegendItem
 from bokeh.models import LegendItem, Legend, GroupFilter, CDSView, Circle, CustomJSHover, HoverTool, Div
-from bokeh.layouts import column, row
+from bokeh.layouts import column, row, Spacer
 from bokeh.events import MouseMove
 import itertools
 from flask import url_for
@@ -136,8 +137,21 @@ def create_app():
             y_axis_type=None,
             tools='', #crosshair ou pas ?
             match_aspect=True,
-            title='Vue zoomée'
+            title='Vue zoomée',
+            visible=False, 
         )
+
+        toggle_button = Toggle(
+            label="Activer/Désactiver le zoom", 
+            button_type="primary", 
+            active=True, 
+        )
+
+        toggle_callback = CustomJS(args=dict(zoom_figure=zoom_figure), code="""
+            zoom_figure.visible = !zoom_figure.visible;
+            zoom_figure.change.emit();
+        """)
+        toggle_button.js_on_click(toggle_callback)
 
         """
         <div>
@@ -256,11 +270,23 @@ def create_app():
         """
         select = Select(title="Option:", value=tache,
                 options=classes)
+        
         select.js_on_change("value", Selecthandler)
 
         select.js_on_change("value", update_zoom_callback)
 
-        layout = column(select, row(plot_figure, zoom_figure))
+        layout = column(
+            select,
+            row(
+                plot_figure,
+                Spacer(width=30),
+                column(
+                    Spacer(height=30),
+                    toggle_button,
+                    zoom_figure,
+                ),
+            ),
+        )
 
         return layout
 

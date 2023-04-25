@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
+html, body {
+  height: 248%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
 /* Style du body */
 body {
   font-family: Calibri, sans-serif;
-  background: rgb(216, 216, 205);
+  background: rgb(17, 17, 17);
   font-size: 16px;
   color: #111;
   position: relative;
@@ -330,4 +341,62 @@ body::-webkit-scrollbar-thumb:hover {
     font-size: 1.45vw;
     padding: 0px 1%;
   }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #f8f8f8;
+  padding: 1.5rem;
+  border-radius: 5px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-container label {
+  font-weight: bold;
+}
+
+.form-container select,
+.form-container input[type="submit"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-container input[type="submit"] {
+  background-color: rgba(45, 45, 45, 1);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: rgba(17, 17, 17, 1);
+}
+
+.text-style-body-container {
+  display: flex;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100vh;
+}
+
+.custom-select {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.custom-select option {
+  font-size: 14px;
+  color: rgba(17, 17, 17, 1);
+  padding: 2px 5px;
 }
