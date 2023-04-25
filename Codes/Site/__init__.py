@@ -43,7 +43,8 @@ def create_app():
         DOSSIER_DATA) if fichier.endswith('.csv')]
 
     # Obtenez tous les modèles, tâches et réductions de dimensions uniques dans les noms de fichiers
-    MODELES = list(set([fichier.split('_')[0] for fichier in fichiers_data]))
+    DATASETS = sorted(list(set([fichier.split('_')[0] for fichier in fichiers_data])))
+    print(DATASETS)
     TACHES = list(set([fichier.split('_')[1] for fichier in fichiers_data]))
     REDUCTIONS = list(set([fichier.split('_')[2].split('.')[0]
                            for fichier in fichiers_data]))
@@ -52,23 +53,23 @@ def create_app():
     def Data():
         if request.method == 'POST':
 
-            modele = request.form['modele']
+            dataset = request.form['dataset']
             tache = request.form['tache']
             reduction = request.form['reduction']
 
             chemin_fichier = os.path.join(
-                DOSSIER_DATA, f"{modele}_{tache}_{reduction}.csv")
+                DOSSIER_DATA, f"{dataset}_{tache}_{reduction}.csv")
             data = pd.read_csv(chemin_fichier)
 
-            plot = create_plot(data,tache)
+            plot = create_plot(data,tache,reduction)
             script, div = components(plot)
 
             #tab4 = TabPanel(child=plot4, title="A BRAND NEW WORLD")
             #plot = Tabs(tabs=[tab1, tab2, tab3, tab4]) 
 
-            return render_template('Data.html', div=div, script=script, MODELES=MODELES, TACHES=TACHES, REDUCTIONS=REDUCTIONS, fichiers_data=fichiers_data)
+            return render_template('Data.html', div=div, script=script, actual_dataset = dataset, actual_tache = tache, actual_reduction = reduction, DATASETS=DATASETS, TACHES=TACHES, REDUCTIONS=REDUCTIONS, fichiers_data=fichiers_data)
         else:
-             return render_template('Data.html', MODELES=MODELES, TACHES=TACHES, REDUCTIONS=REDUCTIONS,fichiers_data=fichiers_data)
+             return render_template('Data.html', DATASETS=DATASETS, TACHES=TACHES, REDUCTIONS=REDUCTIONS,fichiers_data=fichiers_data)
         
     @app.route('/Contact/')
     def Contact():
@@ -87,7 +88,7 @@ def create_app():
     return Response(output.getvalue(), mimetype='image/png')
     """
     
-    def create_plot(data,tache):
+    def create_plot(data,tache,reduction):
 
         data = data.sample(frac=1)
         data.rename(columns={'feature_1': 'x', 'feature_2': 'y'}, inplace=True)
@@ -121,7 +122,7 @@ def create_app():
         data  = data[:max_size]
 
         plot_figure = figure(
-            title='Projection UMAP du jeu de données',
+            title='Projection '+ reduction.upper() +' du jeu de données',
             width=900,
             height=600,
             tools='pan, wheel_zoom, reset, box_zoom, box_select, lasso_select, crosshair, tap, save'
