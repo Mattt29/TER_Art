@@ -10,15 +10,17 @@
 <body>
     <div class="navbar">
         <p>l'art des mathématiques</p>
-        <a href="http://127.0.0.1:5000/Contact/">contact</a>
-        <a href="http://127.0.0.1:5000/Data/">mise en pratique</a>
-        <a href="http://127.0.0.1:5000/">accueil</a>
+        <div class="navbar-right">
+            <a href="http://127.0.0.1:5000/">accueil</a>
+            <a href="http://127.0.0.1:5000/Data/">mise en pratique</a>
+            <a href="http://127.0.0.1:5000/Contact/">contact</a>
+        </div>
     </div>
 
     {% block content %}{% endblock %}
 
     <footer class="Pied">
-        <p>&nbsp;Copyright LesArtistes MIASHS - Tous droits réservés
+        <p>&nbsp;Copyright LesArtistes MIASHS - Tous droits réservés.
             &nbsp;
             <a href="http://127.0.0.1:5000/Contact/">Nous contacter !</a>
         </p>
