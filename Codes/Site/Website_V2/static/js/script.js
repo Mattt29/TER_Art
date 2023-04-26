@@ -147,7 +147,7 @@ const autoScroll = () => {
 };
 
 
-setInterval(autoScroll, 4000);
+setInterval(autoScroll, 5000);
 
 document.addEventListener("mouseup", () => {
   dragStop();

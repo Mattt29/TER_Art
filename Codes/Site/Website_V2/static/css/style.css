@@ -37,12 +37,12 @@ nav {
   display: flex;
   align-items: center;
   text-decoration: none;
-  margin-right: 18.65vw;
+  margin-right: 16.5vw;
 }
 
 .nav-icon span {
-  font-family: Roboto Flex, sans-serif;
-  font-size: 2.5vh;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.8vh;
   margin-left: 1vw;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
@@ -59,7 +59,8 @@ nav {
 
 .navlinks-container a {
   margin: 0 1vw;
-  font-size: 1.7vh;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8vh;
   font-weight: 500;
   text-decoration: none;
   color: rgba(65, 65, 65, 1);
@@ -198,7 +199,7 @@ nav {
 }
 
 .color-4:hover {
-  color: rgba(98, 204, 190, 1);
+  color: rgb(86, 187, 173);
 }
 
 .color-0:hover::after {
@@ -218,14 +219,16 @@ nav {
 }
 
 .color-4:hover::after {
-  background: rgba(98, 204, 190, 1);
+  background:  rgb(86, 187, 173);
 }
 
 .main-content {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  padding-top: 15vh;;
 }
 
 /* HOME.HTML */
@@ -299,4 +302,30 @@ nav {
   .carousel img{
     width: 100%;
   }
+}
+
+.slogan-container {
+  padding-top: 5vh;;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5vh;
+  max-width: 50%; 
+}
+
+.slogan-container h2 {
+  color: rgba(17,17,17,1);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+
+.slogan-container p {
+  color: rgba(127, 127, 127, 1);
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.5;
 }
