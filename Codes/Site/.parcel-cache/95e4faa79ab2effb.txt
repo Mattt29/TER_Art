@@ -17,7 +17,7 @@
 111C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\source-map\lib\source-map-generator.js133269852296180839 0
 96C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\ordered-binary\index.js133269852303027552 0
 98C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\terser\lib\mozilla-ast.js133269852359238184 0
-64C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist133269934198797222 1
+64C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist133269946202945860 1
 128C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\sample-mdb.txt133269852373880166 0
 126C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\csso\node_modules\css-tree\lib\syntax\atrule\media.js133269852462840884 0
 97C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\dom-serializer\README.md133269852300243513 0
@@ -30,7 +30,7 @@
 109C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\node-addon-api\tools\clang-format.js133269852310442953 0
 116C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\fs-search\fs-search.darwin-x64.node133269852334745277 0
 111C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-tree\lib\syntax\node\MediaQuery.js133269852304628374 0
-70C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\index.html133269928772538464 0
+70C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\index.html133269942361150152 0
 104C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\caniuse-lite\data\regions\AW.js133269852307207778 0
 130C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\csso\node_modules\css-tree\cjs\syntax\node\MediaQuery.cjs133269852453937728 0
 105C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\entities\lib\decode_codepoint.js133269852299331877 0
@@ -55,7 +55,7 @@
 140C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\syntax\node\Url.js133269852465829764 0
 99C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\mdn-data\css\at-rules.json133269852298272354 0
 108C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\htmlparser2\lib\WritableStream.d.ts133269852301117318 0
-69C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\script.js133269869469066835 0
+69C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\script.js133269941730161969 0
 91C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\.package-lock.json133269853852543563 0
 137C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\walker\index.js133269852464765388 0
 109C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-tree\lib\lexer\generic-urange.js133269852303889884 0
@@ -68,7 +68,7 @@
 83C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\templates\homepage.html133269319826424901 0
 100C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\fs\src\OverlayFS.js133269852433631771 0
 89C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\is-glob\index.js133269852311041595 0
-69C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\style.css133269934198522776 0
+69C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\style.css133269946202715826 0
 89C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\type-fest\source133269852306811606 1
 121C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-select\node_modules\domutils\lib\legacy.d.ts133269852443135417 0
 99C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-tree\lib\syntax\config133269852305584708 1
@@ -1032,7 +1032,7 @@
 117C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\optimizer-svgo\node_modules\svgo\lib133269852452442594 1
 100C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\svgo\plugins\removeAttrs.js133269852310267397 0
 103C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\watcher\src\Backend.cc133269852355451051 0
-81C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\Site.3464ddca.js133269896223808320 0
+81C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\Site.3464ddca.js133269942362306179 0
 103C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\optimizer-htmlnano\lib133269852427202812 1
 108C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-tree\lib\syntax\config\lexer.js133269852304482413 0
 90C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\tslib\SECURITY.md133269852309546137 0
@@ -2340,7 +2340,7 @@
 125C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\optimizer-svgo\node_modules\mdn-data\LICENSE133269852448007372 0
 93C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\import-fresh\license133269852303670267 0
 98C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\import-fresh\package.json133269852303748095 0
-82C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\logo.95720aa2.jpg133269908926638547 0
+82C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\logo.95720aa2.jpg133269941449549372 0
 92C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\htmlparser2\LICENSE133269852300444805 0
 119C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\dom-serializer\node_modules\entities\readme.md133269852439006947 0
 104C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\caniuse-lite\data\regions\NC.js133269852318644276 0
@@ -3235,7 +3235,7 @@
 92C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-tree\cjs\walker133269852300256090 1
 103C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-tree\cjs\walker\create.cjs133269852298954221 0
 101C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-tree\cjs\utils\clone.cjs133269852298739975 0
-82C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.672d4772.js133269896223793356 0
+82C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.672d4772.js133269941733019197 0
 149C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\node\Selector.js133269852456765249 0
 115C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\css-tree\cjs\utils\create-custom-error.cjs133269852298818693 0
 115C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\caniuse-lite\data\features\css-overflow.js133269852310491460 0
@@ -5441,7 +5441,7 @@
 117C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\hash\parcel-hash.win32-x64-msvc.node133269852428832259 0
 123C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@jridgewell\trace-mapping\node_modules\@jridgewell133269852290409559 1
 94C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\graph\LICENSE133269852373296624 0
-83C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.3a01df49.css133269934198755008 0
+83C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.3a01df49.css133269946202901996 0
 90C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\graph\src133269852373653463 1
 105C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\graph\test\Graph.test.js133269852373531018 0
 134C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\@parcel\graph\test\integration\adjacency-list-shared-array.js133269852373320779 0
@@ -5777,11 +5777,11 @@
 88C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\.bin\terser.ps1133269852745608790 0
 100C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\node_modules\.bin\update-browserslist-db133269852745608790 0
 82C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\chat.c4e70092.svg133269878806171285 0
-87C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.3a01df49.css.map133269934198782327 0
+87C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.3a01df49.css.map133269946202933402 0
 82C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.5e469f4a.js133269868015491674 0
-86C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.672d4772.js.map133269896223867571 0
-75C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.html133269928772888159 0
-85C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\Site.3464ddca.js.map133269896223867571 0
+86C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.672d4772.js.map133269941733077258 0
+75C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\index.html133269942362306179 0
+85C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\dist\Site.3464ddca.js.map133269942362351651 0
 81C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\data\cifar_labels.npy133269122864381814 0
 68C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\data\csv133269122868969986 1
 73C:\Users\brice\OneDrive\Bureau\MIASHS\M1\TER_Art\Codes\Site\data\data.csv133269122869416195 0

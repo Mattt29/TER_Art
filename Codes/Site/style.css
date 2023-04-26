@@ -161,4 +161,50 @@ nav {
     font-size: 1.8vh;
     margin: 1vh 0px;
   }
+
+  .navlinks-container a span {
+    display: inline-block;
+    transition: color 0.3s;
+  }
+  
+}
+
+.color-0:hover {
+  color: rgba(245, 172, 33, 1);
+}
+
+.color-1:hover {
+  color: rgba(231, 47, 35, 1);
+}
+
+.color-2:hover {
+  color: rgba(219, 45, 134, 1);
+}
+
+.color-3:hover {
+  color: rgba(73, 164, 219, 1);
+}
+
+.color-4:hover {
+  color: rgba(98, 204, 190, 1);
+}
+
+.color-0:hover::after {
+  background: rgba(245, 172, 33, 1);
+}
+
+.color-1:hover::after {
+  background: rgba(231, 47, 35, 1);
+}
+
+.color-2:hover::after {
+  background: rgba(219, 45, 134, 1);
+}
+
+.color-3:hover::after {
+  background: rgba(73, 164, 219, 1);
+}
+
+.color-4:hover::after {
+  background: rgba(98, 204, 190, 1);
 }

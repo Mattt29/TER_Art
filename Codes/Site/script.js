@@ -23,3 +23,34 @@ new ResizeObserver(entries => {
     navLinksContainer.style.transition = "none";
   }
 }).observe(document.body)
+
+
+const navLinks = document.querySelectorAll('.navlinks-container a');
+
+navLinks.forEach((link) => {
+  link.addEventListener('mouseenter', (e) => {
+    const target = e.target;
+    const letters = target.textContent.split('');
+    target.textContent = '';
+    let delay = 0;
+
+    letters.forEach((letter, index) => {
+      const span = document.createElement('span');
+      span.textContent = letter;
+      span.style.animationDelay = `${delay}ms`;
+      target.appendChild(span);
+      delay += 100;
+    });
+  });
+
+  link.addEventListener('mouseleave', (e) => {
+    const target = e.target;
+    const spans = target.querySelectorAll('span');
+
+    spans.forEach((span, index) => {
+      setTimeout(() => {
+        span.style.color = 'rgba(65, 65, 65, 1)';
+      }, index * 100);
+    });
+  });
+});
