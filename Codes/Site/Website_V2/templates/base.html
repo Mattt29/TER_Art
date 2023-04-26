@@ -28,11 +28,11 @@
         <span></span>
       </button>
       <div class="navlinks-container">
-        <a href="/home.html" aria-current="page" class="color-0">Home</a>
-        <a href="/ourProject.html" class="color-1">Our project</a>
-        <a href="/yourExploration" class="color-2">Your exploration</a>
-        <a href="/aboutUs.html" class="color-3">About us</a>
-        <a href="/contact.html" class="color-4">Contact</a>
+        <a href="{{ url_for('home') }}" aria-current="page" class="color-0">Home</a>
+        <a href="{{ url_for('ourProject') }}" class="color-1">Our project</a>
+        <a href="{{ url_for('yourExploration') }}" class="color-2">Your exploration</a>
+        <a href="{{ url_for('aboutUs') }}" class="color-3">About us</a>
+        <a href="{{ url_for('contact') }}" class="color-4">Contact</a>
       </div>
     </div>
 
