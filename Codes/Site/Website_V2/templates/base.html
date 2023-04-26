@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Base{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <nav>
+    <a href="/" class="nav-icon" aria-label="homepage" aria-current="page">
+      <img src="{{ url_for('static', filename='../static/img/logo.jpg') }}" alt="logo" />
+      <span>VisualAIExplorer</span>
+    </a>
+    <div class="main-navlinks">
+      <button type="button" class="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navlinks-container">
+        <a href="/home.html" aria-current="page" class="color-0">Home</a>
+        <a href="/ourProject.html" class="color-1">Our project</a>
+        <a href="/yourExploration" class="color-2">Your exploration</a>
+        <a href="/aboutUs.html" class="color-3">About us</a>
+        <a href="/contact.html" class="color-4">Contact</a>
+      </div>
+    </div>
+
+  </nav>
+
+
+  <div class="main-content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

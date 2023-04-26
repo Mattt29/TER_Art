@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="wrapper">
+    <i id="left" class="fa-solid fa-angle-left"></i>
+    <div class="carousel">
+        {% for img_file in img_files %}
+            <img src="{{ url_for('static', filename='img/carousel/' + img_file) }}" alt="img" draggable="false">
+        {% endfor %}
+    </div>
+    <i id="right" class="fa-solid fa-angle-right"></i>
+</div>
+
+{% endblock %}

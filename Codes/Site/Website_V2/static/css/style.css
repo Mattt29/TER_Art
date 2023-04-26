@@ -1,3 +1,15 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* BASE.HTML */
+
 *,
 ::before,
 ::after {
@@ -144,7 +156,7 @@ nav {
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-    background: #fafafa;
+    background: rgba(249, 249, 249, 1);
     top: 100%;
     left: 0;
     transform: translate(-100%);
@@ -207,4 +219,84 @@ nav {
 
 .color-4:hover::after {
   background: rgba(98, 204, 190, 1);
+}
+
+.main-content {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HOME.HTML */
+
+.wrapper{
+  display: flex;
+  max-width: 90vw;
+  position: relative;
+}
+.wrapper i{
+  top: 50%;
+  height: 4.4vh;
+  width: 4.4vh;
+  color: rgba(52, 63, 79, 1);
+  cursor: pointer;
+  font-size: 1.15rem;
+  position: absolute;
+  text-align: center;
+  line-height: 4.4vh;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+.wrapper i:active{
+  transform: translateY(-50%) scale(0.9);
+}
+.wrapper i:hover{
+  background: rgba(242, 242, 242, 1);
+}
+.wrapper i:first-child{
+  left: -2.2vh;
+  display: none;
+}
+.wrapper i:last-child{
+  right: -2.2vh;
+}
+.wrapper .carousel {
+  font-size: 0px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  scroll-behavior: auto;
+}
+
+.carousel.dragging{
+  cursor: grab;
+  scroll-behavior: auto;
+}
+.carousel.dragging img{
+  pointer-events: none;
+}
+.carousel img{
+  height: 40vh;
+  object-fit: cover;
+  user-select: none;
+  margin-left: 1.4vw;
+  width: auto;
+}
+.carousel img:first-child{
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 900px) {
+  .carousel img{
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel img{
+    width: 100%;
+  }
 }
