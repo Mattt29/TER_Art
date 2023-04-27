@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.addEventListener("click", () => {
         let firstImgWidth = firstImg.clientWidth + 14;
         const target = carousel.scrollLeft + (icon.id === "left" ? -firstImgWidth : firstImgWidth);
-        smoothScroll(target, 800);
+        smoothScroll(target, 1800);
         setTimeout(() => showHideIcons(), 60);
       });
     });
@@ -114,15 +114,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const target = carousel.scrollLeft + firstImgWidth;
 
       if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
-        smoothScroll(0, 800);
+        smoothScroll(0, 1800);
       } else {
-        smoothScroll(target, 800);
+        smoothScroll(target, 1800);
       }
 
       setTimeout(() => showHideIcons(), 60);
     };
 
-    setInterval(autoScroll, 5000);
+    setInterval(autoScroll, 8000);
 
     document.addEventListener("mouseup", () => {
       dragStop();

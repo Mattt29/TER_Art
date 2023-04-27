@@ -25,8 +25,8 @@ def create_app():
     def aboutUs():
         return render_template('aboutUs.html')
     
-    @app.route('/contact')
-    def contact():
-        return render_template('contact.html')
+    @app.route('/contactUs')
+    def contactUs():
+        return render_template('contactUs.html')
 
     return app
