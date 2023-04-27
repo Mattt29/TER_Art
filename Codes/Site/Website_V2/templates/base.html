@@ -25,9 +25,11 @@
     </a>
     <div class="main-navlinks">
       <button type="button" class="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span href="{{ url_for('home') }}"></span>
+        <span href="{{ url_for('ourProject') }}"></span>
+        <span href="{{ url_for('yourExploration') }}"></span>
+        <span href="{{ url_for('aboutUs') }}"></span>
+        <span href="{{ url_for('contact') }}"></span>
       </button>
       <div class="navlinks-container">
         <a href="{{ url_for('home') }}" aria-current="page" class="color-0">Home</a>

@@ -1,9 +1,56 @@
 {% extends 'base.html' %}
 
-{% block title %}Our Project{% endblock %}
+{% block title %}Our Project - VisualAIExplorer{% endblock %}
 
 {% block content %}
 
+
+<div class="wpb_wrapper">
+    <div class="eltd-overlapping-image-A">
+        <img src="{{ url_for('static', filename='img/dimension_reduction.jpg') }}" alt="img">
+    </div>
+    <div class="eltd-oc-text-wrapper eltd-oc-text-wrapper-A">
+        <div class="eltd-oc-title">
+            PROJECT
+        </div>
+        <div class="eltd-oc-text">
+            During our first year of the Master's program, we were
+            assigned a research project. <br><br>The objective of this
+            project is to design an architecture able to process a
+            large set of image data and to transform them in order
+            to reveal, or not, relationships between them. To
+            process the images, we used tools studied in class such
+            as dimension reduction and deep learning.
+        </div>
+    </div>
+</div>
+
+<div class="wpb_wrapper">
+    <div class="eltd-overlapping-image-B">
+        <img src="{{ url_for('static', filename='img/multiple_applications.png') }}">
+    </div>
+    <div class="eltd-oc-text-wrapper eltd-oc-text-wrapper-B">
+        <div class="eltd-oc-title">
+            APPLICATIONS
+        </div>
+        <div class="eltd-oc-text">
+            The potential applications of this tool are multiple and
+            could be applied to many fields:
+        </div>
+        <div class="eltd-oc-text">
+            <li><strong>Astronomy:</strong> quick image sorting for easier analysis.</li>
+            <li><strong>Agriculture:</strong> monitoring crop health using cameras.</li>
+            <li><strong>Art:</strong> analysis of paintings and detection of counterfeits.</li>
+            <li><strong>Medicine:</strong> rapid diagnosis from medical images.</li>
+            <li><strong>Environment:</strong> monitoring through satellite image analysis.</li>
+            <li><strong>Industry:</strong> improvement of quality control.</li>
+            <li><strong>Transportation:</strong> optimization of autonomous driving systems.
+            </li>
+            <li><strong>Archaeology:</strong> detection of buried structures using aerial images
+                and LiDAR data.</li>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}
