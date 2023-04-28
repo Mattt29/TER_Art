@@ -752,6 +752,7 @@ li {
   overflow: hidden;
   margin-left: 120px;
   margin-right: 120px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .box::before {
