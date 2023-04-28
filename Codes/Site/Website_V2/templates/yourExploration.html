@@ -8,6 +8,26 @@
     <h1>Your exploration</h1>
     <!-- <p>ceci est une phrase de test</p> -->
 </div>
+<div class="top-container">
+    <section class="exploration">
+        <div class="exploration-content">
+            <div class="exploration-content-text">
+                {% if actual_dataset is defined %}
+                <h2>La base de données actuellement étudiée est <font color="red">{{actual_dataset}}</font> et <font color="red">
+                    {{actual_tache}}</font> est la variable d'entraînement sélectionnée.<br>La méthode de réduction de dimensions
+                  choisie est <font color="red">{{actual_reduction}}</font>.</h2>
+                {% else %}
+                <h2>Veuillez sélectionner un dataset, une tâche et une réduction de dimension</h2>
+                {% endif %}
+            </div>
+        </div>
+        <div class="box">
+            <div class="form">
+                <h2>Click in</h2>
+            </div>
+        </div>
+    </section>
 
+</div>
 
 {% endblock %}
