@@ -125,7 +125,7 @@ def create_app():
         data  = data[:max_size]
 
         plot_figure = figure(
-            title= reduction.upper() +'projection of the dataset',
+            title= reduction.upper() +' projection of the dataset',
             width=900,
             height=600,
             tools='pan, wheel_zoom, reset, box_zoom, box_select, lasso_select, crosshair, tap, save'
@@ -145,10 +145,8 @@ def create_app():
         toggle_button = Toggle(
             label="Enable/Disable zoom",
             button_type="primary",
-            active=True,
-            css_classes=["custom-toggle"]
+            active=True
         )
-
 
         toggle_callback = CustomJS(args=dict(zoom_figure=zoom_figure), code="""
             zoom_figure.visible = !zoom_figure.visible;
