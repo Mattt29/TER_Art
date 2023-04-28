@@ -1,3 +1,35 @@
+// INTRO
+
+// Vérifier si l'animation a déjà été jouée
+const animationPlayed = sessionStorage.getItem("animationPlayed");
+
+// Si l'animation n'a pas été jouée, alors ajouter l'événement "DOMContentLoaded"
+if (!animationPlayed || animationPlayed === "false") {
+  document.addEventListener("DOMContentLoaded", async function () {
+    const introAnimation = document.querySelector(".intro-animation");
+
+    if (introAnimation && introAnimation.classList.contains("intro-animation-active")) {
+      // Attendre que la vérification soit terminée
+      await new Promise((resolve) => {
+        sessionStorage.setItem("animationPlayed", "true");
+
+        setTimeout(() => {
+          introAnimation.style.opacity = "0";
+          setTimeout(() => {
+            introAnimation.style.display = "none";
+            resolve(); // Résoudre la promesse pour indiquer que la vérification est terminée
+          }, 4000);
+        }, 3000);
+      });
+    }
+  });
+} else {
+  const introAnimation = document.querySelector(".intro-animation");
+  if (introAnimation) {
+    introAnimation.style.display = "none";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // BASE.HTML
@@ -157,34 +189,5 @@ document.addEventListener("DOMContentLoaded", () => {
       t--;
       return (-c / 2) * (t * (t - 2) - 1) + b;
     };
-  }
-});
-
-
-// INTRO
-
-document.addEventListener("DOMContentLoaded", async function () {
-  const introAnimation = document.querySelector(".intro-animation");
-
-  if (introAnimation && introAnimation.classList.contains("intro-animation-active")) {
-    // Attendez que la vérification soit terminée
-    await new Promise((resolve) => {
-      const animationPlayed = localStorage.getItem("animationPlayed");
-
-      if (!animationPlayed || animationPlayed === "false") {
-        localStorage.setItem("animationPlayed", "true");
-
-        setTimeout(() => {
-          introAnimation.style.opacity = "0";
-          setTimeout(() => {
-            introAnimation.style.display = "none";
-            resolve(); // Résoudre la promesse pour indiquer que la vérification est terminée
-          }, 4000);
-        }, 3000);
-      } else {
-        introAnimation.style.display = "none";
-        resolve(); // Résoudre la promesse pour indiquer que la vérification est terminée
-      }
-    });
   }
 });

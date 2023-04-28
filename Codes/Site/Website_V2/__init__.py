@@ -7,7 +7,6 @@ def create_app():
     app = Flask(__name__)
 
     @app.route('/')
-    @app.route('/home')
     def home():
         img_folder = os.path.join('static', 'img', 'carousel')
         img_files = [f for f in os.listdir(img_folder) if f.endswith(('.png', '.jpg', '.jpeg', '.gif'))]
