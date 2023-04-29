@@ -19,7 +19,7 @@
   <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 
-<body>
+<body class="fade-in-A">
   <nav>
     <a href="/" class="nav-icon" aria-label="homepage" aria-current="page">
       <img src="{{ url_for('static', filename='../static/img/logo.jpg') }}" alt="logo" />
@@ -34,11 +34,11 @@
         <span></span>
       </button>
       <div class="navlinks-container">
-        <a href="{{ url_for('home') }}" aria-current="page" class="color-0">Home</a>
-        <a href="{{ url_for('ourProject') }}" class="color-1">Our project</a>
-        <a href="{{ url_for('yourExploration') }}" class="color-2">Your exploration</a>
-        <a href="{{ url_for('aboutUs') }}" class="color-3">About us</a>
-        <a href="{{ url_for('contactUs') }}" class="color-4">Contact us</a>
+        <a href="{{ url_for('home') }}" aria-current="page" class="color-0  fade-in-AA">Home</a>
+        <a href="{{ url_for('ourProject') }}" class="color-1  fade-in-AB">Our project</a>
+        <a href="{{ url_for('yourExploration') }}" class="color-2  fade-in-AC">Your exploration</a>
+        <a href="{{ url_for('aboutUs') }}" class="color-3  fade-in-AD">About us</a>
+        <a href="{{ url_for('contactUs') }}" class="color-4  fade-in-AE">Contact us</a>
       </div>
     </div>
 

@@ -4,14 +4,14 @@
 
 {% block content %}
 
-<div class="exploration-heading">
+<div class="exploration-heading fade-in-B">
     <h1>Your exploration</h1>
     <!-- <p>ceci est une phrase de test</p> -->
 </div>
 <div class="top-container">
     <section class="exploration">
         <div class="exploration-content">
-            <div class="exploration-content-text">
+            <div class="exploration-content-text fade-in-D">
                 {% if actual_dataset is defined %}
                 <h2>The images currently studied are from the <font>{{actual_dataset}}</font> database and
                     <font>{{actual_tache}}</font> is the selected training variable.<br>
@@ -23,7 +23,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="box">        
+        <div class="box fade-in-C">        
 
             <form class="form" action="/yourExploration/" method="post">
                 <h2>Click in</h2>
@@ -49,8 +49,7 @@
                     {% endfor %}
                 </select>
                 <br>
-                <input type="submit" value="Display">
-
+                <input class = "exploration-button" type="submit" value="DISPLAY">
             </form>
 
         </div>

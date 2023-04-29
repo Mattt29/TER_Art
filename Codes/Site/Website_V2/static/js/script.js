@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => showHideIcons(), 60);
     };
 
-    setInterval(autoScroll, 8000);
+    setInterval(autoScroll, 7000);
 
     document.addEventListener("mouseup", () => {
       dragStop();
