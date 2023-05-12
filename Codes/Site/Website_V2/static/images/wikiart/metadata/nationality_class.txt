@@ -1,0 +1,8 @@
+0 Français
+1 Russe
+2 Américain
+3 Arménien
+4 Espagnol
+5 Autrichien
+6 Néerlandais
+7 Allemand
